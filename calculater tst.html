@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		div{
+			border: 2px;
+			border-style: solid;
+			width: 300px;
+			height: 545px;
+			margin-left: 450px;
+			margin-top: 40px;
+			border-radius: 10px;
+		}
+		input{
+           width: 287px;
+           height: 40px;
+           margin-left: 2px;
+           border: 2px;
+           border-style: solid;
+           text-align: right;
+           font-size: 20px;
+           background: darkseagreen;
+           border-radius: 5px;
+           
+
+		}
+		td{
+			width: 80px;
+            height: 75px;
+			border: 1px;
+			border-style: solid;
+			text-align: center;
+			border-radius: 5px;
+		}
+		td:hover{
+			background: lightgreen;
+		}
+	</style>
+</head>
+<body style="background: black; color: green;">
+	<div>
+		<p style="text-align: center; font-size: 20px;">Calculator</p><hr>
+		<input type="text" id="result" maxlength="15" value="0" title="screen"><hr>	
+		<table>
+		<tr>
+			<td id="cancel" onclick="cancelAllFun()" title="Clear All">C</td>
+			<td id="opr" onclick="oprFun('/')" title="Devide">/</td>
+			<td id="opr" onclick="oprFun('*')" title="Multiply">*</td>
+			<td id="clearLog" onclick="clearLogFun()" title="Clear Last Digit">X</td>
+		</tr>
+
+		<tr>
+			<td id="int" onclick="intFun(7)" title="Seven">7</td>
+			<td id="int" onclick="intFun(8)" title="Eight">8</td>
+			<td id="int" onclick="intFun(9)" title="Nine">9</td>
+			<td id="opr" onclick="oprFun('-')" title="Subtract">-</td>
+		</tr>
+
+		<tr>
+			<td id="int" onclick="intFun(4)" title="Four">4</td>
+			<td id="int" onclick="intFun(5)" title="Five">5</td>
+			<td id="int" onclick="intFun(6)" title="Six">6</td>
+			<td id="opr" onclick="oprFun('+')" title="Addition">+</td>
+		</tr>
+
+		<tr>
+			<td id="int" onclick="intFun(1)" title="One">1</td>
+			<td id="int" onclick="intFun(2)" title="Two">2</td>
+			<td id="int" onclick="intFun(3)" title="Three">3</td>
+			<td id="equal" rowspan="2" onclick="equalFun()" title="Answaer">=</td>
+		</tr>
+
+		<tr>
+			<td id="opr" onclick="oprFun('%')" title="Remainder">%</td>
+			<td id="int" onclick="intFun(0)" title="Zero">0</td>
+			<td id="opr" onclick="oprFun('.')" title="Dot">.</td>
+			
+		</tr>
+	</table>
+	</div>
+<script type="text/javascript">
+	let result=document.querySelector("#result");
+	let int=document.querySelectorAll("#int");
+	let opr=document.querySelectorAll("#opr");
+	let equal=document.querySelector("#equal");
+	let cancel=document.querySelector("#cancel");
+	let clearLog=document.querySelector("#clearLog");
+	
+	function intFun(input){
+		if(result.value=='0'){
+			result.value=input;
+		}
+        
+		else if(result.value.length>=15){
+			result.value=result.value;
+		}
+		else{
+			result.value+=input;
+		}
+	}
+
+	function oprFun(input){
+		let text=result.value;
+		let ans=text.substring(text.length-1);
+		if(ans=='+' || ans=='-' || ans=='/' || ans=='*'|| ans=='%' || ans=='.'){
+			result.value;
+		}
+		else{
+			result.value+=input;
+		}
+	}
+
+
+	function cancelAllFun(){
+		result.value='0';
+	}
+
+	function clearLogFun(){
+		result.value=result.value.substring(0,result.value.length-1);
+		if(result.value.length==0){
+			result.value='0';
+		}
+
+	}
+
+	function equalFun(){
+		result.value=eval(result.value);
+	}
+   function equalfun(){
+	result.value=eval(result.value);
+   }
+</script>
+</body>
+</html>
